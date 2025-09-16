@@ -2,7 +2,7 @@
 
 # EC2 details
 EC2_USER="ubuntu"
-EC2_HOST="ec2-3-22-77-242.us-east-2.compute.amazonaws.com"
+EC2_HOST="ec2-3-144-1-11.us-east-2.compute.amazonaws.com"
 KEY_PATH="~/Downloads/docker-key.pem"
 
 # Set correct permissions for the key

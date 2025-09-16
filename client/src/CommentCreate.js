@@ -8,7 +8,7 @@ export default function CommentCreate({ postId, onCommentCreated }) {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        await axios.post(`http://3.22.77.242:4001/posts/${postId}/comments`, {
+        await axios.post(`http://3.144.1.11:4001/posts/${postId}/comments`, {
             content
         });
         setContent('');
