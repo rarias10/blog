@@ -8,7 +8,7 @@ export default function App() {
   
   const fetchPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:4002/posts");
+      const res = await axios.get("http://query:4002/posts");
       setPosts(res.data);
     } catch (error) {
       console.error("Error fetching posts:", error);
