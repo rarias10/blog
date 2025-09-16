@@ -24,10 +24,9 @@ cd event-bus && npm install && npm start
 cd client && npm install && npm start
 ```
 
-### Docker Build
+### Docker Compose
 ```bash
-chmod +x build-images.sh
-./build-images.sh
+docker-compose up --build -d
 ```
 
 ## Architecture

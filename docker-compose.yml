@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  posts:
+    build: ./posts
+    image: rarias1082/blog-posts:latest
+    ports:
+      - "4000:4000"
+    depends_on:
+      - event-bus
+
+  comments:
+    build: ./comments
+    image: rarias1082/blog-comments:latest
+    ports:
+      - "4001:4001"
+    depends_on:
+      - event-bus
+
+  query:
+    build: ./query
+    image: rarias1082/blog-query:latest
+    ports:
+      - "4002:4002"
+    depends_on:
+      - event-bus
+
+  moderation:
+    build: ./moderation
+    image: rarias1082/blog-moderation:latest
+    ports:
+      - "4003:4003"
+    depends_on:
+      - event-bus
+
+  event-bus:
+    build: ./event-bus
+    image: rarias1082/blog-event-bus:latest
+    ports:
+      - "4005:4005"
+
+  client:
+    build: ./client
+    image: rarias1082/blog-client:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - posts
+      - comments
+      - query
