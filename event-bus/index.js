@@ -21,19 +21,19 @@ app.post('/events', async (req, res) => {
 
   // Forward the event to all services
   try {
-    await axios.post('http://posts:4000/events', event);
+    await axios.post('http://posts-srv:4000/events', event);
   } catch (err) {}
   
   try {
-    await axios.post('http://comments:4001/events', event);
+    await axios.post('http://comments-srv:4001/events', event);
   } catch (err) {}
   
   try {
-    await axios.post('http://query:4002/events', event);
+    await axios.post('http://query-srv:4002/events', event);
   } catch (err) {}
 
   try {
-    await axios.post('http://moderation:4003/events', event);
+    await axios.post('http://moderation-srv:4003/events', event);
   } catch (err) {}
 
   res.send({ status: 'OK' });
