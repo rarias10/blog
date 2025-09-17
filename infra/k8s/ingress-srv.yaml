@@ -32,7 +32,7 @@ spec:
             name: query-srv
             port:
               number: 4002
-      - path: /
+      - path: /?(.*)
         pathType: Prefix
         backend:
           service:
