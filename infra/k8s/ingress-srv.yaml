@@ -4,14 +4,14 @@ metadata:
   name: ingress-srv
   namespace: blog-app
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
+  ingressClassName: nginx
   rules:
   - host: kubevpro.basquiat.app
     http:
       paths:
-      - path: /posts/?(*)/comments
+      - path: /posts/[^/]+/comments
         pathType: ImplementationSpecific
         backend:
           service:
@@ -32,7 +32,7 @@ spec:
             name: query-srv
             port:
               number: 4002
-      - path: /?(.*)
+      - path: /
         pathType: Prefix
         backend:
           service:
