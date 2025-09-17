@@ -5,35 +5,36 @@ metadata:
   namespace: blog-app
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   ingressClassName: nginx
   rules:
   - host: kubevpro.basquiat.app
     http:
       paths:
-      - path: /posts/[^/]+/comments
+      - path: /posts/(.+)/comments/?(.*)
         pathType: ImplementationSpecific
         backend:
           service:
             name: comments-srv
             port:
               number: 4001
-      - path: /posts/create
-        pathType: Exact
+      - path: /posts/create/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: posts-srv
             port:
               number: 4000
-      - path: /posts
-        pathType: Exact
+      - path: /posts/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: query-srv
             port:
               number: 4002
-      - path: /
-        pathType: Prefix
+      - path: /(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: client-srv
