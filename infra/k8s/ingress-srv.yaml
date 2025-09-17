@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-  - host: posts.com
+  - host: kubevpro.basquiat.app
     http:
       paths:
       - path: /posts/?(*)/comments
